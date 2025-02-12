@@ -17,9 +17,6 @@ export const fetchTokenData = async (tokenAddress: string) => {
     const provider = new JsonRpcProvider(import.meta.env.VITE_INFURA_URL);
     const tokenContract = new Contract(tokenAddress, ERC20_ABI, provider);
 
-    const tokenName = await tokenContract.symbol();
-    console.log(tokenName);
-
     const [name, symbol, decimals, totalSupply] = await Promise.all([
       tokenContract.name(),
       tokenContract.symbol(),
